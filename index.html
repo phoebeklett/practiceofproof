@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <title>PDF to Image</title>
     <script type="module">
-        import { getDocument, GlobalWorkerOptions } from 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.3.136/build/pdf.js';
+        import { getDocument, GlobalWorkerOptions } from 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.3.136/build/pdf.mjs';
 
         // Path to your PDF file
         const pdfPath = 'Proof_Liturgy_Invite_1.pdf';
 
         // PDF.js settings
-        GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.3.136/build/pdf.worker.js';
+        GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.3.136/build/pdf.worker.mjs';
 
         // Load the PDF
         getDocument(pdfPath).promise.then(pdf => {
