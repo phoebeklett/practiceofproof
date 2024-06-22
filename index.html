@@ -10,24 +10,20 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            position: relative;
         }
         #pdfContainer {
-            position: relative;
-            max-width: 80%; /* Maximum width of the container */
+            max-width: 80vw; /* Maximum width of the container */
             max-height: 80vh; /* Maximum height of the container */
             overflow: auto; /* Enable scrolling if the content overflows */
         }
         canvas {
+            display: block;
+            margin: 0 auto; /* Center the canvas horizontally */
             image-rendering: optimizeQuality; /* Improve image quality */
         }
         #rsvp {
-            position: absolute;
-            bottom: 20px; /* Add more whitespace at the bottom */
-            left: 50%; /* Center horizontally */
-            transform: translateX(-50%); /* Move back by half of its width */
             text-align: center;
-            width: fit-content;
+            margin-top: 20px; /* Add space between the canvas and RSVP text */
         }
     </style>
     <script type="module">
@@ -43,16 +39,14 @@
         getDocument(pdfPath).promise.then(pdf => {
             // Load the first page
             pdf.getPage(1).then(page => {
-                const scale = 2; // Increase scale to 2
+                const scale = 2; // Set scale to 2
                 const viewport = page.getViewport({ scale });
 
                 // Prepare canvas using PDF page dimensions
                 const canvas = document.getElementById('pdfCanvas');
                 const context = canvas.getContext('2d');
-                
-                const container = document.getElementById('pdfContainer');
-                container.style.width = `${viewport.width}px`; // Set container width to image width
-                container.style.height = `${viewport.height}px`; // Set container height to image height
+                canvas.height = viewport.height;
+                canvas.width = viewport.width;
 
                 // Render PDF page into canvas context
                 const renderContext = {
@@ -60,12 +54,6 @@
                     viewport: viewport
                 };
                 page.render(renderContext);
-
-                // Add RSVP text
-                const rsvpElement = document.createElement('div');
-                rsvpElement.id = 'rsvp';
-                rsvpElement.innerHTML = '<a href="mailto:your_email@example.com">RSVP to your_email@example.com</a>';
-                document.body.appendChild(rsvpElement);
             });
         });
     </script>
@@ -73,6 +61,9 @@
 <body>
     <div id="pdfContainer">
         <canvas id="pdfCanvas"></canvas>
+    </div>
+    <div id="rsvp">
+        <a href="mailto:your_email@example.com">RSVP to your_email@example.com</a>
     </div>
 </body>
 </html>
