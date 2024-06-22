@@ -14,6 +14,12 @@
         canvas {
             image-rendering: optimizeQuality; /* Improve image quality */
         }
+        #rsvp {
+            position: absolute;
+            bottom: 10px;
+            text-align: center;
+            width: 100%;
+        }
     </style>
     <script type="module">
         import { getDocument, GlobalWorkerOptions } from 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.3.136/build/pdf.mjs';
@@ -28,7 +34,7 @@
         getDocument(pdfPath).promise.then(pdf => {
             // Load the first page
             pdf.getPage(1).then(page => {
-                const scale = 1.5;
+                const scale = .75;
                 const viewport = page.getViewport({ scale });
 
                 // Prepare canvas using PDF page dimensions
@@ -48,6 +54,12 @@
                     viewport: viewport
                 };
                 page.render(renderContext);
+
+                // Add RSVP text
+                const rsvpElement = document.createElement('div');
+                rsvpElement.id = 'rsvp';
+                rsvpElement.innerHTML = '<a href="mailto:practiceofproof@example.com">RSVP to practiceofproof@example.com</a>';
+                document.body.appendChild(rsvpElement);
             });
         });
     </script>
