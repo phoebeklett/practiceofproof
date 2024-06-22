@@ -2,9 +2,39 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Embedded PDF</title>
+    <title>PDF to Image</title>
+    <script src="build/pdf.mjs"></script>
 </head>
 <body>
-    <embed src="Proof_Liturgy_Invite_1.pdf" width="800px" height="2100px" />
+    <canvas id="pdfCanvas"></canvas>
+    <script>
+        // Path to your PDF file
+        const pdfPath = 'file_name.pdf';
+
+        // PDF.js settings
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'build/pdf.worker.mjs';
+
+        // Load the PDF
+        pdfjsLib.getDocument(pdfPath).promise.then(pdf => {
+            // Load the first page
+            pdf.getPage(1).then(page => {
+                const scale = 1.5;
+                const viewport = page.getViewport({ scale });
+
+                // Prepare canvas using PDF page dimensions
+                const canvas = document.getElementById('pdfCanvas');
+                const context = canvas.getContext('2d');
+                canvas.height = viewport.height;
+                canvas.width = viewport.width;
+
+                // Render PDF page into canvas context
+                const renderContext = {
+                    canvasContext: context,
+                    viewport: viewport
+                };
+                page.render(renderContext);
+            });
+        });
+    </script>
 </body>
 </html>
