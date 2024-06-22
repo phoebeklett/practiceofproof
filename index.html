@@ -10,16 +10,17 @@
             align-items: center;
             height: 100vh;
             margin: 0;
+            flex-direction: column; /* Arrange items vertically */
         }
         #pdfContainer {
-            max-width: 80vw; /* Maximum width of the container */
-            max-height: 80vh; /* Maximum height of the container */
+            max-width: 60vw; /* Maximum width of the container */
+            max-height: 60vh; /* Maximum height of the container */
             overflow: auto; /* Enable scrolling if the content overflows */
         }
         canvas {
             display: block;
             margin: 0 auto; /* Center the canvas horizontally */
-            image-rendering: optimizeQuality; /* Improve image quality */
+            image-rendering: auto; 
         }
         #rsvp {
             text-align: center;
