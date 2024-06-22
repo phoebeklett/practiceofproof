@@ -12,14 +12,22 @@
             margin: 0;
             position: relative;
         }
+        #pdfContainer {
+            position: relative;
+            max-width: 80%; /* Maximum width of the container */
+            max-height: 80vh; /* Maximum height of the container */
+            overflow: auto; /* Enable scrolling if the content overflows */
+        }
         canvas {
             image-rendering: optimizeQuality; /* Improve image quality */
         }
         #rsvp {
             position: absolute;
             bottom: 20px; /* Add more whitespace at the bottom */
+            left: 50%; /* Center horizontally */
+            transform: translateX(-50%); /* Move back by half of its width */
             text-align: center;
-            width: 100%;
+            width: fit-content;
         }
     </style>
     <script type="module">
@@ -41,13 +49,10 @@
                 // Prepare canvas using PDF page dimensions
                 const canvas = document.getElementById('pdfCanvas');
                 const context = canvas.getContext('2d');
-                canvas.height = viewport.height;
-                canvas.width = viewport.width;
-
-                // Center the canvas
-                const marginX = (window.innerWidth - canvas.width) / 2;
-                const marginY = (window.innerHeight - canvas.height) / 2;
-                canvas.style.margin = `${marginY}px ${marginX}px`;
+                
+                const container = document.getElementById('pdfContainer');
+                container.style.width = `${viewport.width}px`; // Set container width to image width
+                container.style.height = `${viewport.height}px`; // Set container height to image height
 
                 // Render PDF page into canvas context
                 const renderContext = {
@@ -66,6 +71,8 @@
     </script>
 </head>
 <body>
-    <canvas id="pdfCanvas"></canvas>
+    <div id="pdfContainer">
+        <canvas id="pdfCanvas"></canvas>
+    </div>
 </body>
 </html>
