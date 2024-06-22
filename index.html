@@ -43,7 +43,7 @@
             // Load the first page
             pdf.getPage(1).then(page => {
                 const viewport = page.getViewport({ scale: 1 });
-                const scale = Math.min(window.innerWidth / viewport.width, window.innerHeight / viewport.height) * window.devicePixelRatio; // Set scale based on the size of the PDF page, the size of the viewport, and device pixel ratio
+                const scale = Math.min(window.innerWidth / viewport.width, window.innerHeight / viewport.height) * window.devicePixelRatio * 1.3; // Set scale based on the size of the PDF page, the size of the viewport, and device pixel ratio
 
                 // Prepare canvas using PDF page dimensions
                 const canvas = document.getElementById('pdfCanvas');
