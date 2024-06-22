@@ -3,18 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>PDF to Image</title>
-    <!-- Include pdf.js from local directory -->
-    <script src="build/pdf.js" type="module"></script>
-</head>
-<body>
-    <canvas id="pdfCanvas"></canvas>
     <script type="module">
+        import { getDocument, GlobalWorkerOptions } from 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.3.136/build/pdf.js';
+
         // Path to your PDF file
-        const pdfPath = 'file_name.pdf';
+        const pdfPath = 'Proof_Liturgy_Invite_1.pdf';
 
         // PDF.js settings
-        import { getDocument, GlobalWorkerOptions } from './build/pdf.js';
-        GlobalWorkerOptions.workerSrc = './build/pdf.worker.js';
+        GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.3.136/build/pdf.worker.js';
 
         // Load the PDF
         getDocument(pdfPath).promise.then(pdf => {
@@ -38,5 +34,8 @@
             });
         });
     </script>
+</head>
+<body>
+    <canvas id="pdfCanvas"></canvas>
 </body>
 </html>
