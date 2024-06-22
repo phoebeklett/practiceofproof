@@ -2,50 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PDF Viewer</title>
-    <style>
-        body { margin: 0; }
-        #canvas-container { text-align: center; }
-        canvas { border: 1px solid black; }
-    </style>
+    <title>Embedded PDF</title>
 </head>
 <body>
-    <div id="canvas-container">
-        <canvas id="pdf-render"></canvas>
-    </div>
-    <script src="pdfjs/pdf.js"></script>
-    <script>
-        const url = 'Proof_Liturgy_Invite_1.pdf';
-
-        const pdfjsLib = window['pdfjs-dist/build/pdf'];
-        pdfjsLib.GlobalWorkerOptions.workerSrc = 'pdfjs/pdf.worker.js';
-
-        let pdfDoc = null,
-            pageNum = 1,
-            scale = 1.5,
-            canvas = document.getElementById('pdf-render'),
-            ctx = canvas.getContext('2d');
-
-        const renderPage = num => {
-            pdfDoc.getPage(num).then(page => {
-                const viewport = page.getViewport({ scale: scale });
-                canvas.height = viewport.height;
-                canvas.width = viewport.width;
-
-                const renderCtx = {
-                    canvasContext: ctx,
-                    viewport: viewport
-                };
-
-                page.render(renderCtx);
-            });
-        };
-
-        pdfjsLib.getDocument(url).promise.then(pdfDoc_ => {
-            pdfDoc = pdfDoc_;
-            renderPage(pageNum);
-        });
-    </script>
+    <embed src="Proof_Liturgy_Invite_1.pdf" width="800px" height="2100px" />
 </body>
 </html>
