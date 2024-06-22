@@ -8,7 +8,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 80vh;
+            height: 100vh;
             margin: 0;
             flex-direction: column; /* Arrange items vertically */
         }
@@ -40,7 +40,7 @@
         getDocument(pdfPath).promise.then(pdf => {
             // Load the first page
             pdf.getPage(1).then(page => {
-                const scale = 2; // Set scale to 2
+                const scale = 1; // Set scale to 2
                 const viewport = page.getViewport({ scale });
 
                 // Prepare canvas using PDF page dimensions
