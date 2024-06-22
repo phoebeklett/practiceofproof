@@ -2,7 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>PDF to Image</title>
+    <title>Practice of Proof</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        canvas {
+            image-rendering: optimizeQuality; /* Improve image quality */
+        }
+    </style>
     <script type="module">
         import { getDocument, GlobalWorkerOptions } from 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.3.136/build/pdf.mjs';
 
@@ -24,6 +36,11 @@
                 const context = canvas.getContext('2d');
                 canvas.height = viewport.height;
                 canvas.width = viewport.width;
+
+                // Center the canvas
+                const marginX = (window.innerWidth - canvas.width) / 2;
+                const marginY = (window.innerHeight - canvas.height) / 2;
+                canvas.style.margin = `${marginY}px ${marginX}px`;
 
                 // Render PDF page into canvas context
                 const renderContext = {
