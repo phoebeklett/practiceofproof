@@ -3,19 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>PDF to Image</title>
-    <script src="build/pdf.mjs"></script>
+    <!-- Include pdf.js from local directory -->
+    <script src="build/pdf.js" type="module"></script>
 </head>
 <body>
     <canvas id="pdfCanvas"></canvas>
-    <script>
+    <script type="module">
         // Path to your PDF file
         const pdfPath = 'file_name.pdf';
 
         // PDF.js settings
-        pdfjsLib.GlobalWorkerOptions.workerSrc = 'build/pdf.worker.mjs';
+        import { getDocument, GlobalWorkerOptions } from './build/pdf.js';
+        GlobalWorkerOptions.workerSrc = './build/pdf.worker.js';
 
         // Load the PDF
-        pdfjsLib.getDocument(pdfPath).promise.then(pdf => {
+        getDocument(pdfPath).promise.then(pdf => {
             // Load the first page
             pdf.getPage(1).then(page => {
                 const scale = 1.5;
