@@ -22,6 +22,7 @@
             width: 100%;
             height: 100%;
             object-fit: contain; /* Resize the PDF image to fit the container */
+            image-rendering: optimizeQuality; /* Improve image quality */
         }
         #rsvp {
             text-align: center;
@@ -47,8 +48,11 @@
                 // Prepare canvas using PDF page dimensions
                 const canvas = document.getElementById('pdfCanvas');
                 const context = canvas.getContext('2d');
-                canvas.height = viewport.height * scale;
-                canvas.width = viewport.width * scale;
+                canvas.height = viewport.height * scale * window.devicePixelRatio; // Increase resolution
+                canvas.width = viewport.width * scale * window.devicePixelRatio; // Increase resolution
+
+                // Set canvas rendering properties for better quality
+                context.imageSmoothingEnabled = true;
 
                 // Render PDF page into canvas context
                 const renderContext = {
