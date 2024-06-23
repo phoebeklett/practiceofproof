@@ -3,18 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Practice of Proof</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 120vh;
+            height: 100vh;
             margin: 0;
             flex-direction: column; /* Arrange items vertically */
         }
         #pdfContainer {
-            max-width: 160vw; /* Maximum width of the container */
-            max-height: 160vh; /* Maximum height of the container */
+            width: 100%; /* Make the container width 100% */
+            height: 100%; /* Make the container height 100% */
+            display: flex;
+            justify-content: center;
+            align-items: center;
             overflow: hidden; /* Hide any content that overflows the container */
             position: relative; /* Position the child elements */
         }
@@ -26,8 +30,8 @@
         }
         #rsvp {
             text-align: center;
-            margin-top: 0px; /* Add space between the canvas and RSVP text */
-            margin-bottom: 5px; /* Add space between the RSVP text and the bottom of the page */
+            margin-top: 20px; /* Add space between the canvas and RSVP text */
+            width: 100%; /* Ensure the RSVP text takes the full width on mobile */
         }
     </style>
     <script type="module">
@@ -44,7 +48,7 @@
             // Load the first page
             pdf.getPage(1).then(page => {
                 const viewport = page.getViewport({ scale: 1 });
-                const scale = Math.min(window.innerWidth / viewport.width, window.innerHeight / viewport.height) * window.devicePixelRatio * 1.5; // Set scale based on the size of the PDF page, the size of the viewport, and device pixel ratio
+                const scale = Math.min(window.innerWidth / viewport.width, window.innerHeight / viewport.height) * window.devicePixelRatio * 1.1; // Set scale based on the size of the PDF page, the size of the viewport, and device pixel ratio, with a slight increase
 
                 // Prepare canvas using PDF page dimensions
                 const canvas = document.getElementById('pdfCanvas');
@@ -76,3 +80,4 @@
     <br>
 </body>
 </html>
+
