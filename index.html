@@ -7,32 +7,30 @@
     <style>
         body {
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            height: 120vh;
+            justify-content: space-between;
+            height: 100vh;
             margin: 0;
-            flex-direction: column; /* Arrange items vertically */
         }
         #pdfContainer {
-            width: 100%; /* Make the container width 100% */
-            height: calc(100vh - 40px); /* Adjust the height to account for the RSVP text */
+            flex: 1;
+            width: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: hidden; /* Hide any content that overflows the container */
-            position: relative; /* Position the child elements */
+            overflow: hidden;
         }
         #pdfCanvas {
             width: 100%;
             height: 100%;
-            object-fit: contain; /* Resize the PDF image to fit the container */
-            image-rendering: optimizeQuality; /* Improve image quality */
+            object-fit: contain;
+            image-rendering: optimizeQuality;
         }
         #rsvp {
             text-align: center;
-            margin-top: 0px; /* Reduce margin to minimize whitespace */
-            margin-bottom: 0px;
-            width: 100%; /* Ensure the RSVP text takes the full width on mobile */
+            margin: 5px 0;
+            width: 100%;
         }
     </style>
     <script type="module">
@@ -74,8 +72,6 @@
     <div id="pdfContainer">
         <canvas id="pdfCanvas"></canvas>
     </div>
-    <br>
-    <br>
     <div id="rsvp">
         <a href="mailto:practiceofproof@gmail.com">RSVP to practiceofproof@gmail.com</a>
     </div>
