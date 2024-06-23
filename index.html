@@ -9,13 +9,13 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            height: 120vh;
             margin: 0;
             flex-direction: column; /* Arrange items vertically */
         }
         #pdfContainer {
             width: 100%; /* Make the container width 100% */
-            height: calc(100vh - 40px); /* Adjust the height to account for the RSVP text */
+            height: 100vh; /* Adjust the height to account for the RSVP text */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -30,7 +30,8 @@
         }
         #rsvp {
             text-align: center;
-            margin: 5px 0; /* Reduce margin to minimize whitespace */
+            margin-top: 0px; /* Reduce margin to minimize whitespace */
+            margin-bottom: 5px;
             width: 100%; /* Ensure the RSVP text takes the full width on mobile */
         }
     </style>
@@ -76,5 +77,7 @@
     <div id="rsvp">
         <a href="mailto:practiceofproof@gmail.com">RSVP to practiceofproof@gmail.com</a>
     </div>
+    <br>
+    <br>
 </body>
 </html>
