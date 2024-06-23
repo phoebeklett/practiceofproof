@@ -15,7 +15,7 @@
         }
         #pdfContainer {
             width: 100%; /* Make the container width 100% */
-            height: 100%; /* Make the container height 100% */
+            height: calc(100vh - 60px); /* Adjust the height to account for the RSVP text */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -30,7 +30,7 @@
         }
         #rsvp {
             text-align: center;
-            margin-top: 20px; /* Add space between the canvas and RSVP text */
+            margin: 10px 0; /* Reduce margin to minimize whitespace */
             width: 100%; /* Ensure the RSVP text takes the full width on mobile */
         }
     </style>
@@ -74,10 +74,7 @@
         <canvas id="pdfCanvas"></canvas>
     </div>
     <div id="rsvp">
-        <a href="mailto:practiceofproof@gmail.com">RSVP to practiceofproof@gmail.com</a>
+        <a href="mailto:your_email@example.com">RSVP to your_email@example.com</a>
     </div>
-    <br>
-    <br>
 </body>
 </html>
-
