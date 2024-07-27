@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Service Program</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 50px;
+            font-family: 'Times New Roman', serif;
+            background-color: #ffffff; /* Crisp white background */
+            color: #333;
+        }
+        #imageContainer {
+            flex: 1;
+            width: 100%;
+            display: flex;
+            justify-content: left;
+            align-items: center;
+            overflow-x: scroll; /* Enable vertical scrolling */
+            /* padding: 10px; */
+        }
+        #highQualityImage {
+            width: 40%;
+            max-width: 600px; /* Set a maximum width */
+            height: auto;
+            object-fit: contain;
+            image-rendering: optimizeQuality;
+            padding-right: 10px;
+        }
+        #nav {
+            position: absolute;
+            top: 50px;
+            left: 75px;
+            width: 30px;
+            height: auto
+        }
+        h1 {
+            font-size: 2em;
+            color: #000;
+            rotate: 270deg;
+            white-space: nowrap; /* Prevent line breaks in the heading */
+
+        }
+        #container img {
+            margin-bottom: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html">
+        <img id="nav" src="assets/nav.png" alt="nav">
+    </a>
+    <div id="imageContainer">
+        <h1>Service Program</h1>
+        <img id="highQualityImage" src="assets/7_11_program/page1.png" alt="page1">
+        <img id="highQualityImage" src="assets/7_11_program/page2.png" alt="page2">
+        <img id="highQualityImage" src="assets/7_11_program/page3.png" alt="page3">
+        <img id="highQualityImage" src="assets/7_11_program/page4.png" alt="page4">
+        <img id="highQualityImage" src="assets/7_11_program/page5.png" alt="page5">
+        <img id="highQualityImage" src="assets/7_11_program/page6.png" alt="page6">
+    </div>
+</body>
+</html>

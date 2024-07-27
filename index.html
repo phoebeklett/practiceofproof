@@ -6,76 +6,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-between;
-            height: 100vh;
-            margin: 0;
+            margin: 75px;
+            font-family: 'Times New Roman', serif;
+            background-color: #ffffff;
+            color: #333;
         }
-        #pdfContainer {
-            flex: 1;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
+        #container {
+            text-align: left;
         }
-        #pdfCanvas {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            image-rendering: optimizeQuality;
+        #nav {
+            position: absolute;
+            top: 40px;
+            left: 35px;
+            width: 25px;
+            height: auto
         }
-        #rsvp {
-            text-align: center;
-            margin: 5px 0;
-            width: 100%;
+        h1 {
+            font-size: 1.5em;
+            color: #000;
+        }
+        h2 {
+            font-size: 1.2em;
+            color: #000;
+        }
+        p {
+            font-size: 1em;
+            margin-bottom: 20px;
+        }
+        a {
+            text-decoration: none;
+            color: #007BFF;
+            font-weight: bold;
         }
     </style>
-    <script type="module">
-        import { getDocument, GlobalWorkerOptions } from 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.3.136/build/pdf.mjs';
-
-        // Path to your PDF file
-        const pdfPath = 'Proof_Liturgy_Invite_1.pdf';
-
-        // PDF.js settings
-        GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.3.136/build/pdf.worker.mjs';
-
-        // Load the PDF
-        getDocument(pdfPath).promise.then(pdf => {
-            // Load the first page
-            pdf.getPage(1).then(page => {
-                const viewport = page.getViewport({ scale: 1 });
-                const scale = Math.min(window.innerWidth / viewport.width, window.innerHeight / viewport.height) * window.devicePixelRatio * 1.1; // Set scale based on the size of the PDF page, the size of the viewport, and device pixel ratio, with a slight increase
-
-                // Prepare canvas using PDF page dimensions
-                const canvas = document.getElementById('pdfCanvas');
-                const context = canvas.getContext('2d');
-                canvas.height = viewport.height * scale; // Increase resolution
-                canvas.width = viewport.width * scale; // Increase resolution
-
-                // Set canvas rendering properties for better quality
-                context.imageSmoothingEnabled = true;
-
-                // Render PDF page into canvas context
-                const renderContext = {
-                    canvasContext: context,
-                    viewport: page.getViewport({ scale })
-                };
-                page.render(renderContext);
-            });
-        });
-    </script>
 </head>
 <body>
-    <div id="pdfContainer">
-        <canvas id="pdfCanvas"></canvas>
+    <a href="index.html">
+        <img id="nav" src="assets/nav.png" alt="nav">
+    </a>
+    <div id="container">
+        <h1>Practice of Proof</h1>
+        <p>Mathematical arts and ritual.</p>
+        <h2>Past Services </h2>
+        <a href="invite.html"> 7/11 Liturgy Invite</a>
+        <br>
+        <a href="program.html"> 7/11 Liturgy Program</a>
+        <h2>Upcoming Services</h2>
+        <p> Proof's next Liturgy will be in the Fall.</p>
+        <h2>RSVP</h2>
+        <p> Please send a short note to this email: 
+        <a href="mailto: practiceofproof@gmail.com"> practiceofproof@gmail.com</a>
+        </p> 
     </div>
-    <div id="rsvp">
-        <a href="mailto:practiceofproof@gmail.com">RSVP to practiceofproof@gmail.com</a>
-    </div>
-    <br>
-    <br>
 </body>
 </html>
+

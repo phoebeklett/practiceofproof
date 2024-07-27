@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Practice of Proof</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 100px;
+            font-family: 'Times New Roman', serif;
+            background-color: #ffffff; /* Crisp white background */
+            color: #333;
+        }
+        #nav {
+            position: absolute;
+            top: 50px;
+            left: 75px;
+            width: 30px;
+            height: auto
+        }
+        #imageContainer {
+            flex: 1;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        #highQualityImage {
+            width: 40%;
+            max-width: 600px; /* Set a maximum width */
+            height: auto;
+            object-fit: contain;
+            image-rendering: optimizeQuality;
+            padding-right: 10px;
+        }
+        #container img {
+            margin-bottom: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html">
+        <img id="nav" src="assets/nav.png" alt="nav">
+    </a>
+    <div id="imageContainer">
+        <img id="highQualityImage" src="assets/invite.png" alt="invite">
+    </div>
+</body>
+</html>
