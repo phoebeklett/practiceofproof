@@ -22,10 +22,13 @@
         }
 
         #imageContainer {
-            display: flex;
-            align-items: center; /* Center items vertically */
-            overflow-x: auto; /* Enable horizontal scrolling */
+            flex: 1;
             width: 100%;
+            display: flex;
+            justify-content: left;
+            align-items: center;
+            overflow-x: scroll; /* Enable vertical scrolling */
+            /* padding: 10px; */
         }
 
         #highQualityImage {
@@ -51,8 +54,8 @@
             }
             #nav {
                 width: 20px;
-                top: 15px;
-                left: 20px;
+                top: 10px;
+                left: 15px;
             }
             h1 {
                 font-size: 1.5em;
